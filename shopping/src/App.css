@@ -1,30 +1,59 @@
-* {
-  font-family: "Roboto", sans-serif;
-  padding: 0;
-  margin: 0;
+/* Display the products in a flex container */
+.products-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow the items to wrap onto new lines */
+  gap: 20px; /* Space between the products */
 }
 
-.ui.cards > .card > .image {
-  height: 250px;
-  padding: 20px;
-  background: #fff;
-  margin: auto;
+.products-container .four.wide.column {
+  flex: 1 1 calc(33.33% - 20px); /* Make each card take up one-third of the container */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+  margin-bottom: 20px; /* Space between rows */
 }
-.ui.cards > .card > .image > img {
+
+.ui.cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.ui.cards > .card {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.ui.cards > .card:hover {
+  transform: translateY(-5px); /* Adds hover effect */
+}
+
+.ui.cards > .card .image {
+  height: 250px; /* Set a fixed height for the images */
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ui.cards > .card .image > img {
   height: 100%;
-  max-width: 100%;
   width: auto;
+  max-width: 100%;
 }
-.ui.cards > .card > .content > .header {
+
+.ui.cards > .card .content > .header {
   height: 48px;
   overflow: hidden;
   margin-bottom: 5px;
 }
-.ui.cards > .card > .content > .description {
+
+.ui.cards > .card .content > .description {
   height: 36px;
   margin-bottom: 0px;
   overflow: hidden;
 }
+
 .ui.cards > .card .meta.price {
   margin-bottom: 5px;
   font-size: 18px;
@@ -36,58 +65,16 @@
   font-size: 1.3rem;
   color: #222;
 }
-
-.ui.menu.fixed {
-  height: 60px;
-  padding-top: 15px;
+/* Restrict the image size in the ProductDetails component */
+.ui.grid > .row > .column.lp img {
+  max-width: 50%; /* Limit the image width to 80% of the container */
+  height: auto; /* Maintain the aspect ratio */
+  object-fit: contain; /* Ensure the image doesn't get stretched */
 }
 
-.ui.grid.container {
-  margin-top: 45px;
-}
-
-.ui.grid > .row {
-  background: #fff;
-}
+/* Optional: Adjust the maximum size of the image */
 .ui.grid > .row > .column.lp {
-  padding: 20px 40px 20px 20px;
-  align-self: flex-start !important;
-}
-.ui.grid > .row > .column.rp {
-  padding: 20px 20px 20px 40px;
-  text-align: left;
-  align-self: flex-start !important;
+  max-width: 600px; /* You can adjust this value based on your design */
+  margin: 0 auto; /* Center the image container */
 }
 
-.ui.grid > .row > .column > img,
-.ui.grid > .row > img {
-  height: 100%;
-}
-.ui.placeholder .header:not(:first-child):before,
-.ui.placeholder .image:not(:first-child):before,
-.ui.placeholder .paragraph:not(:first-child):before {
-  display: none;
-}
-
-.ui.label,
-.ui.labels .label {
-  font-size: 22px;
-}
-
-.column.rp h1 {
-  color: #333;
-}
-.column.rp p {
-  font-size: 18px;
-  color: #777;
-}
-.ui.placeholder.segment .column .button,
-.ui.placeholder.segment .column .field,
-.ui.placeholder.segment .column textarea,
-.ui.placeholder.segment .column > .ui.input {
-  background-color: #ff3e6c;
-  border: 1px solid #ff3e6c;
-  color: #fff;
-  font-size: 18px;
-  margin-left: 0;
-}
